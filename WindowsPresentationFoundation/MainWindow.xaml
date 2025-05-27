@@ -1,0 +1,32 @@
+﻿<Window x:Class="WindowsPresentationFoundation.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WindowsPresentationFoundation"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <!-- creamos  el menu de la app del clima -->
+        <Menu VerticalAlignment="Top">
+            <MenuItem Header="Acerca de...">
+                <MenuItem Header="Nosotros..." />
+                <MenuItem Header="Nuevo" />
+                <MenuItem Header="Abrir" />
+                <Separator />
+                <MenuItem Header="Salir" />
+            </MenuItem>
+            <MenuItem Header="Ver">
+                <MenuItem Header="Pronóstico actual" />
+                <MenuItem Header="Historial" />
+            </MenuItem>
+            <MenuItem Header="Ayuda">
+                <MenuItem Header="Acerca de" />
+            </MenuItem>
+            <MenuItem Header="Salir">
+                <Separator />
+                <MenuItem Header="Salir" />
+            </MenuItem>
+        </Menu>
+    </Grid>
+</Window>

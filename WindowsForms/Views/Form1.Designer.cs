@@ -63,8 +63,9 @@
             button3.Name = "button3";
             button3.Size = new Size(105, 23);
             button3.TabIndex = 2;
-            button3.Text = "button3";
+            button3.Text = "Close";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // Consola
             // 

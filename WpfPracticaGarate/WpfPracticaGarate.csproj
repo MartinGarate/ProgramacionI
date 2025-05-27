@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="book-svgrepo-com %281%29.png" />
+    <None Remove="documentation-edit-svgrepo-com.png" />
+    <None Remove="ISP HD2 %281%29.png" />
+    <None Remove="student-person-3-svgrepo-com %281%29.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="book-svgrepo-com (1).png" />
+    <Resource Include="documentation-edit-svgrepo-com.png" />
+    <Resource Include="ISP HD2 (1).png" />
+    <Resource Include="student-person-3-svgrepo-com (1).png" />
+  </ItemGroup>
+
+</Project>
