@@ -39,6 +39,7 @@
             NostrosIcon = new FontAwesome.Sharp.IconToolStripButton();
             IconSalir = new FontAwesome.Sharp.IconToolStripButton();
             pictureBox1 = new PictureBox();
+            buttonObtenerClima = new Button();
             menuStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -80,7 +81,7 @@
             NosotrosIconMenu.IconColor = Color.Black;
             NosotrosIconMenu.IconFont = FontAwesome.Sharp.IconFont.Auto;
             NosotrosIconMenu.Name = "NosotrosIconMenu";
-            NosotrosIconMenu.Size = new Size(180, 22);
+            NosotrosIconMenu.Size = new Size(164, 22);
             NosotrosIconMenu.Text = "Quienes somos...";
             NosotrosIconMenu.Click += NosotrosIconMenu_Click;
             // 
@@ -145,11 +146,22 @@
             pictureBox1.TabIndex = 3;
             pictureBox1.TabStop = false;
             // 
+            // buttonObtenerClima
+            // 
+            buttonObtenerClima.Location = new Point(244, 201);
+            buttonObtenerClima.Name = "buttonObtenerClima";
+            buttonObtenerClima.Size = new Size(125, 23);
+            buttonObtenerClima.TabIndex = 4;
+            buttonObtenerClima.Text = "Obtener Clima";
+            buttonObtenerClima.UseVisualStyleBackColor = true;
+            buttonObtenerClima.Click += buttonObtenerClima_Click;
+            // 
             // ClimaAppView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(623, 372);
+            Controls.Add(buttonObtenerClima);
             Controls.Add(labelTituloApp);
             Controls.Add(pictureBox1);
             Controls.Add(toolStrip1);
@@ -183,5 +195,6 @@
         private FontAwesome.Sharp.IconToolStripButton NostrosIcon;
         private FontAwesome.Sharp.IconToolStripButton IconSalir;
         private PictureBox pictureBox1;
+        private Button buttonObtenerClima;
     }
 }

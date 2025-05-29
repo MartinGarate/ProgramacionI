@@ -7,11 +7,13 @@
         mc:Ignorable="d"
         Title="Sistema De Gestion del Estudiante" Height="450" Width="800" Icon="/ISP HD2 (1).png" ResizeMode="CanResizeWithGrip">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="434.04"/>
         </Grid.RowDefinitions>
-        <Grid>
+        <Grid Margin="0,0,0,329">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
@@ -20,7 +22,7 @@
             <Image Grid.Column="0" Height="95" Width="95" Source="/ISP HD2 (1).png" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
             <Label Grid.Column="1" Content="Sistema De Gestion del Estudiante" Margin="118,0,0,0" VerticalAlignment="Center" FontWeight="Bold" FontSize="22" HorizontalAlignment="Left"/>
         </Grid>
-        <Button HorizontalAlignment="Left" Margin="45,28,0,0" Grid.Row="1" VerticalAlignment="Top" Height="95" Width="155" FontWeight="Bold" FontSize="20" Background="#FF1B1B1B"
+        <Button HorizontalAlignment="Left" Margin="141,134,0,0" VerticalAlignment="Top" Height="96" Width="155" FontWeight="Bold" FontSize="20" Background="#FF1B1B1B"
                 BorderThickness="0"  >
             <Button.Resources>
                 <Style TargetType="Border">
@@ -32,7 +34,7 @@
                 <Label Content="Carrera" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Foreground="White" Padding="0" Margin="0" FontWeight="Normal"/>
             </StackPanel>
         </Button>
-        <Button HorizontalAlignment="Left" Margin="225,28,0,0" Grid.Row="1" VerticalAlignment="Top" Height="95" Width="155" FontWeight="Bold" FontSize="20" Background="#FF1B1B1B"
+        <Button HorizontalAlignment="Left" Margin="321,134,0,0" VerticalAlignment="Top" Height="96" Width="155" FontWeight="Bold" FontSize="20" Background="#FF1B1B1B"
             BorderThickness="0"  >
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
@@ -44,7 +46,7 @@
                 <Label Content="Materias" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Foreground="White" Padding="0" Margin="0" FontWeight="Normal"/>
             </StackPanel>
         </Button>
-        <Button HorizontalAlignment="Left" Margin="400,28,0,0" Grid.Row="1" VerticalAlignment="Top" Height="95" Width="155" FontWeight="Bold" FontSize="20" Background="#FF1B1B1B"
+        <Button HorizontalAlignment="Left" Margin="496,134,0,0" VerticalAlignment="Top" Height="96" Width="155" FontWeight="Bold" FontSize="20" Background="#FF1B1B1B"
             BorderThickness="0"  >
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
