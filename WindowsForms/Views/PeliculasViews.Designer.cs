@@ -28,31 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dataGridView1 = new DataGridView();
+            dataGridViewFilm = new DataGridView();
             btnAgregar = new FontAwesome.Sharp.IconButton();
             btnBorrar = new FontAwesome.Sharp.IconButton();
             btnEditar = new FontAwesome.Sharp.IconButton();
             btnSalir = new FontAwesome.Sharp.IconButton();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            pictureBoxFilm = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewFilm).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxFilm).BeginInit();
             SuspendLayout();
             // 
-            // dataGridView1
+            // dataGridViewFilm
             // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 12);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.Size = new Size(787, 234);
-            dataGridView1.TabIndex = 0;
+            dataGridViewFilm.AllowUserToAddRows = false;
+            dataGridViewFilm.AllowUserToDeleteRows = false;
+            dataGridViewFilm.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridViewFilm.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewFilm.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewFilm.Location = new Point(12, 12);
+            dataGridViewFilm.MultiSelect = false;
+            dataGridViewFilm.Name = "dataGridViewFilm";
+            dataGridViewFilm.ReadOnly = true;
+            dataGridViewFilm.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewFilm.Size = new Size(568, 277);
+            dataGridViewFilm.TabIndex = 0;
+            dataGridViewFilm.SelectionChanged += dataGridViewFilm_SelectionChanged;
             // 
             // btnAgregar
             // 
+            btnAgregar.Anchor = AnchorStyles.Bottom;
             btnAgregar.IconChar = FontAwesome.Sharp.IconChar.None;
             btnAgregar.IconColor = Color.Black;
             btnAgregar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnAgregar.Location = new Point(301, 283);
+            btnAgregar.Location = new Point(12, 324);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(75, 23);
             btnAgregar.TabIndex = 1;
@@ -61,22 +69,25 @@
             // 
             // btnBorrar
             // 
+            btnBorrar.Anchor = AnchorStyles.Bottom;
             btnBorrar.IconChar = FontAwesome.Sharp.IconChar.None;
             btnBorrar.IconColor = Color.Black;
             btnBorrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnBorrar.Location = new Point(463, 283);
+            btnBorrar.Location = new Point(174, 324);
             btnBorrar.Name = "btnBorrar";
             btnBorrar.Size = new Size(75, 23);
             btnBorrar.TabIndex = 2;
             btnBorrar.Text = "&Borrar";
             btnBorrar.UseVisualStyleBackColor = true;
+            btnBorrar.Click += btnBorrar_Click;
             // 
             // btnEditar
             // 
+            btnEditar.Anchor = AnchorStyles.Bottom;
             btnEditar.IconChar = FontAwesome.Sharp.IconChar.None;
             btnEditar.IconColor = Color.Black;
             btnEditar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnEditar.Location = new Point(382, 283);
+            btnEditar.Location = new Point(93, 324);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(75, 23);
             btnEditar.TabIndex = 3;
@@ -85,6 +96,7 @@
             // 
             // btnSalir
             // 
+            btnSalir.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnSalir.IconChar = FontAwesome.Sharp.IconChar.None;
             btnSalir.IconColor = Color.Black;
             btnSalir.IconFont = FontAwesome.Sharp.IconFont.Auto;
@@ -95,28 +107,41 @@
             btnSalir.Text = "&Salir";
             btnSalir.UseVisualStyleBackColor = true;
             // 
+            // pictureBoxFilm
+            // 
+            pictureBoxFilm.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            pictureBoxFilm.Location = new Point(586, 12);
+            pictureBoxFilm.Name = "pictureBoxFilm";
+            pictureBoxFilm.Size = new Size(213, 277);
+            pictureBoxFilm.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBoxFilm.TabIndex = 5;
+            pictureBoxFilm.TabStop = false;
+            // 
             // PeliculasViews
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(811, 359);
+            Controls.Add(pictureBoxFilm);
             Controls.Add(btnSalir);
             Controls.Add(btnEditar);
             Controls.Add(btnBorrar);
             Controls.Add(btnAgregar);
-            Controls.Add(dataGridView1);
+            Controls.Add(dataGridViewFilm);
             Name = "PeliculasViews";
             Text = "PeliculasViews";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewFilm).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxFilm).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private DataGridView dataGridView1;
+        private DataGridView dataGridViewFilm;
         private FontAwesome.Sharp.IconButton btnAgregar;
         private FontAwesome.Sharp.IconButton btnBorrar;
         private FontAwesome.Sharp.IconButton btnEditar;
         private FontAwesome.Sharp.IconButton btnSalir;
+        private PictureBox pictureBoxFilm;
     }
 }
