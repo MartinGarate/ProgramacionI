@@ -375,39 +375,39 @@ namespace WindowsForms.Views
         }
 
         // Eventos de los CheckBox de estilo
-        private void checkBoxBold_CheckedChanged(object sender, EventArgs e) => ActualizarFuenteYEstilo();
-        private void checkBoxItalic_CheckedChanged(object sender, EventArgs e) => ActualizarFuenteYEstilo();
-        private void checkBoxUnderline_CheckedChanged(object sender, EventArgs e) => ActualizarFuenteYEstilo();
+        //private void checkBoxBold_CheckedChanged(object sender, EventArgs e) => ActualizarFuenteYEstilo();
+        //private void checkBoxItalic_CheckedChanged(object sender, EventArgs e) => ActualizarFuenteYEstilo();
+        //private void checkBoxUnderline_CheckedChanged(object sender, EventArgs e) => ActualizarFuenteYEstilo();
 
         
 
-        private void comboBoxFuente_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            comboBoxFamiliaFuente.Items.Clear();
-            string fuenteSeleccionada = comboBoxFuente.SelectedItem?.ToString();
-            if (string.IsNullOrEmpty(fuenteSeleccionada)) return;
+        //private void comboBoxFuente_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    comboBoxFamiliaFuente.Items.Clear();
+        //    string fuenteSeleccionada = comboBoxFuente.SelectedItem?.ToString();
+        //    if (string.IsNullOrEmpty(fuenteSeleccionada)) return;
 
-            InstalledFontCollection fuentes = new InstalledFontCollection();
-            var variantes = fuentes.Families
-                .Where(f => f.Name.StartsWith(fuenteSeleccionada, StringComparison.InvariantCultureIgnoreCase))
-                .Select(f => f.Name)
-                .Distinct()
-                .ToList();
+        //    InstalledFontCollection fuentes = new InstalledFontCollection();
+        //    var variantes = fuentes.Families
+        //        .Where(f => f.Name.StartsWith(fuenteSeleccionada, StringComparison.InvariantCultureIgnoreCase))
+        //        .Select(f => f.Name)
+        //        .Distinct()
+        //        .ToList();
 
-            if (variantes.Count > 1)
-                foreach (var variante in variantes)
-                    comboBoxFamiliaFuente.Items.Add(variante);
+        //    if (variantes.Count > 1)
+        //        foreach (var variante in variantes)
+        //            comboBoxFamiliaFuente.Items.Add(variante);
 
-            if (comboBoxFamiliaFuente.Items.Count > 0)
-                comboBoxFamiliaFuente.SelectedIndex = 0;
+        //    if (comboBoxFamiliaFuente.Items.Count > 0)
+        //        comboBoxFamiliaFuente.SelectedIndex = 0;
 
-            ActualizarFuenteYEstilo();
-        }
+        //    ActualizarFuenteYEstilo();
+        //}
 
-        private void comboBoxFamiliaFuente_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ActualizarFuenteYEstilo();
-        }
+        //private void comboBoxFamiliaFuente_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    ActualizarFuenteYEstilo();
+        //}
 
 
         // Evento cuando se le haga click en la imagen SeleccionarColorImagen se deberá abrir un cuadro de diálogo para seleccionar un color y cambiarlo en el label

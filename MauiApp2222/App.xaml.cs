@@ -1,4 +1,6 @@
-﻿namespace MauiApp2222
+﻿using MauiApp2222.Views;
+
+namespace MauiApp2222
 {
     public partial class App : Application
     {
@@ -6,7 +8,7 @@
         {
             InitializeComponent();
 
-            MainPage = new AppShell();
+            MainPage = new PeliculasView();
         }
     }
 }
