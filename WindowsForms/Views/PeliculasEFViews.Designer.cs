@@ -1,6 +1,6 @@
 ﻿namespace WindowsForms.Views
 {
-    partial class PeliculasViews
+    partial class PeliculasEFViews
     {
         /// <summary>
         /// Required designer variable.
@@ -56,6 +56,8 @@
             LabelPeliculas = new Label();
             panel1 = new Panel();
             TimerStatusBar = new System.Windows.Forms.Timer(components);
+            label6 = new Label();
+            comboBoxPais = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dataGridViewFilm).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxFilm).BeginInit();
             tabControl.SuspendLayout();
@@ -233,6 +235,8 @@
             // 
             // tabPageAgregar_Editar
             // 
+            tabPageAgregar_Editar.Controls.Add(comboBoxPais);
+            tabPageAgregar_Editar.Controls.Add(label6);
             tabPageAgregar_Editar.Controls.Add(iconButtonCancelar);
             tabPageAgregar_Editar.Controls.Add(iconButtonGuardar);
             tabPageAgregar_Editar.Controls.Add(numericCalificacion);
@@ -256,7 +260,7 @@
             iconButtonCancelar.IconChar = FontAwesome.Sharp.IconChar.None;
             iconButtonCancelar.IconColor = Color.Black;
             iconButtonCancelar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButtonCancelar.Location = new Point(342, 206);
+            iconButtonCancelar.Location = new Point(333, 255);
             iconButtonCancelar.Name = "iconButtonCancelar";
             iconButtonCancelar.Size = new Size(75, 23);
             iconButtonCancelar.TabIndex = 19;
@@ -269,7 +273,7 @@
             iconButtonGuardar.IconChar = FontAwesome.Sharp.IconChar.None;
             iconButtonGuardar.IconColor = Color.Black;
             iconButtonGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButtonGuardar.Location = new Point(261, 206);
+            iconButtonGuardar.Location = new Point(252, 255);
             iconButtonGuardar.Name = "iconButtonGuardar";
             iconButtonGuardar.Size = new Size(75, 23);
             iconButtonGuardar.TabIndex = 18;
@@ -377,15 +381,34 @@
             TimerStatusBar.Interval = 6000;
             TimerStatusBar.Tick += TimerStatusBar_Tick;
             // 
-            // PeliculasViews
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Plus Jakarta Sans SemiBold", 13F, FontStyle.Bold);
+            label6.ForeColor = Color.FromArgb(41, 32, 35);
+            label6.Location = new Point(202, 200);
+            label6.Name = "label6";
+            label6.Size = new Size(53, 29);
+            label6.TabIndex = 20;
+            label6.Text = "País:";
+            // 
+            // comboBoxPais
+            // 
+            comboBoxPais.FormattingEnabled = true;
+            comboBoxPais.Location = new Point(261, 206);
+            comboBoxPais.Name = "comboBoxPais";
+            comboBoxPais.Size = new Size(316, 23);
+            comboBoxPais.TabIndex = 21;
+            // 
+            // PeliculasEFViews
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(981, 544);
             Controls.Add(tabControl);
             Controls.Add(panel1);
-            Name = "PeliculasViews";
-            StartPosition = FormStartPosition.CenterScreen;
+            Name = "PeliculasEFViews";
+            StartPosition = FormStartPosition.CenterParent;
             ((System.ComponentModel.ISupportInitialize)dataGridViewFilm).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxFilm).EndInit();
             tabControl.ResumeLayout(false);
@@ -431,5 +454,7 @@
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel LabelStatusMessage;
         private System.Windows.Forms.Timer TimerStatusBar;
+        private ComboBox comboBoxPais;
+        private Label label6;
     }
 }

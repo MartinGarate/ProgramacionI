@@ -15,17 +15,14 @@ using WindowsForms.Services;
 
 namespace WindowsForms.Views
 {
-    public partial class PeliculasViews : Form
+    public partial class PeliculasADOViews : Form
     {
-        //Creamos campos / propiedades
-        string url = "https://netflisp-77fe.restdb.io/rest/peliculas?apikey=7e3b2f3b47495345da5617567d822a55dfd7f";
-        HttpClient clientHttp = new HttpClient();
-
-        PeliculaService peliculaService = new PeliculaService();
+        
+        PeliculaADOService peliculaService = new PeliculaADOService();
         Pais peliculaModificada;
-        List<Pais>? peliculas;
+        List<Pais> peliculas;
 
-        public PeliculasViews()
+        public PeliculasADOViews()
         {
             InitializeComponent();
             ObtenemosPeliculas();
@@ -50,7 +47,7 @@ namespace WindowsForms.Views
                 {
                     //obtenemos el id de la pelicula seleccionada
 
-                    if (await peliculaService.DeleteAsync(peliculaSeleccionada._id))
+                    if (await peliculaService.DeleteAsync(peliculaSeleccionada.id))
                     {
                         LabelStatusMessage.Text = $"Pelicula {peliculaSeleccionada.titulo} borrada correctamente";
                         ObtenemosPeliculas();
@@ -67,14 +64,6 @@ namespace WindowsForms.Views
                 }
             }
         }
-
-        //private void dataGridViewFilm_CellEnter(object sender, DataGridViewCellEventArgs e)
-        //{
-        //    if (dataGridViewFilm.SelectedRows.Count > 0 && dataGridViewFilm.SelectedRows.Count > 0)
-        //    {
-        //        MessageBox.Show($"Has seleccionado la pelicula");
-        //    }
-        //}
 
         private void dataGridViewFilm_SelectionChanged(object sender, EventArgs e)
         {
@@ -163,25 +152,8 @@ namespace WindowsForms.Views
 
         private void iconButtonBuscar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(textBoxBuscar.Text))
-            {
-                MessageBox.Show("Por favor, ingrese un título para buscar.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            }
-
-            else if (peliculas.Where(p => p.titulo.ToLower().Contains(textBoxBuscar.Text.ToLower())).Count() == 0)
-            {
-                MessageBox.Show("No se encontraron resultados para la búsqueda.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                dataGridViewFilm.DataSource = null;
-            }
-
-            else if (peliculas.Where(p => p.titulo.ToLower().Contains(textBoxBuscar.Text.ToLower())).Count() >= 1)
-            {
                 dataGridViewFilm.DataSource = peliculas.Where(p => p.titulo.ToLower().Contains(textBoxBuscar.Text.ToLower()))
                     .ToList();
-
-            }
-
 
         }
 

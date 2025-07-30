@@ -151,7 +151,7 @@ namespace WindowsForms.Views
 
         private void ButtonEditarAuto_Click(object sender, EventArgs e)
         {
-            
+
             if (dataGridViewAutos.RowCount > 0 && dataGridViewAutos.SelectedRows.Count > 0)
             {
                 autoModificado = (Autos)dataGridViewAutos.SelectedRows[0].DataBoundItem;
@@ -215,6 +215,11 @@ namespace WindowsForms.Views
         {
             tabControl.SelectTab("tabPageAgregar_Editar");
             LimpiarCampos();
+        }
+
+        private void ButtonClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -40,6 +40,7 @@
             dataGridViewAutos = new DataGridView();
             pictureBoxAuto = new PictureBox();
             panel1 = new Panel();
+            ButtonClose = new FontAwesome.Sharp.IconButton();
             pictureBox1 = new PictureBox();
             tabPageAgregar_Editar = new TabPage();
             panel2 = new Panel();
@@ -231,11 +232,34 @@
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackColor = Color.FromArgb(20, 21, 20);
+            panel1.Controls.Add(ButtonClose);
             panel1.Controls.Add(pictureBox1);
             panel1.Location = new Point(-4, -7);
             panel1.Name = "panel1";
             panel1.Size = new Size(986, 110);
             panel1.TabIndex = 0;
+            // 
+            // ButtonClose
+            // 
+            ButtonClose.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            ButtonClose.BackColor = Color.Transparent;
+            ButtonClose.FlatAppearance.BorderSize = 0;
+            ButtonClose.FlatStyle = FlatStyle.Flat;
+            ButtonClose.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            ButtonClose.ForeColor = Color.FromArgb(242, 242, 242);
+            ButtonClose.IconChar = FontAwesome.Sharp.IconChar.DoorOpen;
+            ButtonClose.IconColor = Color.FromArgb(242, 242, 242);
+            ButtonClose.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            ButtonClose.IconSize = 24;
+            ButtonClose.ImageAlign = ContentAlignment.MiddleRight;
+            ButtonClose.Location = new Point(917, 15);
+            ButtonClose.Name = "ButtonClose";
+            ButtonClose.Size = new Size(65, 28);
+            ButtonClose.TabIndex = 8;
+            ButtonClose.Text = "Salir";
+            ButtonClose.TextAlign = ContentAlignment.MiddleLeft;
+            ButtonClose.UseVisualStyleBackColor = false;
+            ButtonClose.Click += ButtonClose_Click;
             // 
             // pictureBox1
             // 
@@ -499,6 +523,7 @@
             ClientSize = new Size(980, 599);
             Controls.Add(tabControl);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
             Name = "AutoStockView";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Auto Stock Garate";
@@ -554,5 +579,6 @@
         private NumericUpDown numericPrecioAuto;
         private Panel panel2;
         private PictureBox pictureBox2;
+        private FontAwesome.Sharp.IconButton ButtonClose;
     }
 }

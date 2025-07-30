@@ -1,6 +1,6 @@
 ﻿namespace WindowsForms.Views
 {
-    partial class PeliculasViews
+    partial class PeliculasADOViews
     {
         /// <summary>
         /// Required designer variable.

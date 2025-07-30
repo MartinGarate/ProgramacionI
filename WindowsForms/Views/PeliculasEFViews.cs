@@ -15,17 +15,14 @@ using WindowsForms.Services;
 
 namespace WindowsForms.Views
 {
-    public partial class PeliculasViews : Form
+    public partial class PeliculasEFViews : Form
     {
-        //Creamos campos / propiedades
-        string url = "https://netflisp-77fe.restdb.io/rest/peliculas?apikey=7e3b2f3b47495345da5617567d822a55dfd7f";
-        HttpClient clientHttp = new HttpClient();
 
-        PeliculaService peliculaService = new PeliculaService();
+        PeliculaEFService peliculaService = new PeliculaEFService();
         Pais peliculaModificada;
         List<Pais>? peliculas;
 
-        public PeliculasViews()
+        public PeliculasEFViews()
         {
             InitializeComponent();
             ObtenemosPeliculas();
@@ -35,6 +32,12 @@ namespace WindowsForms.Views
         {
             peliculas = await peliculaService.GetAllAsync();
             dataGridViewFilm.DataSource = peliculas;
+            dataGridViewFilm.Columns["_id"].Visible = false; // Ocultamos la columna id
+            dataGridViewFilm.Columns["Id"].Visible = false; // Ocultamos la columna Pais
+            dataGridViewFilm.Columns["Eliminado"].Visible = false; // Ocultamos la columna Eliminado
+            dataGridViewFilm.Columns["PaisId"].Visible = false; // Ocultamos la columna PaisId
+            dataGridViewFilm.Columns["portada"].Visible = false; // Ocultamos la columna PaisId
+
         }
 
         private async void btnBorrar_Click(object sender, EventArgs e)
@@ -50,7 +53,7 @@ namespace WindowsForms.Views
                 {
                     //obtenemos el id de la pelicula seleccionada
 
-                    if (await peliculaService.DeleteAsync(peliculaSeleccionada._id))
+                    if (await peliculaService.DeleteAsync(peliculaSeleccionada.id))
                     {
                         LabelStatusMessage.Text = $"Pelicula {peliculaSeleccionada.titulo} borrada correctamente";
                         ObtenemosPeliculas();
@@ -67,14 +70,6 @@ namespace WindowsForms.Views
                 }
             }
         }
-
-        //private void dataGridViewFilm_CellEnter(object sender, DataGridViewCellEventArgs e)
-        //{
-        //    if (dataGridViewFilm.SelectedRows.Count > 0 && dataGridViewFilm.SelectedRows.Count > 0)
-        //    {
-        //        MessageBox.Show($"Has seleccionado la pelicula");
-        //    }
-        //}
 
         private void dataGridViewFilm_SelectionChanged(object sender, EventArgs e)
         {
@@ -108,7 +103,7 @@ namespace WindowsForms.Views
         {
             Pais PeliculaAGuardar = new Pais
             {
-                _id = peliculaModificada?._id??null,
+                id = peliculaModificada?.id ??null,
                 titulo = textBoxTitulo.Text,
                 duracion = (int)numericDuracion.Value,
                 portada = textBoxPortada.Text,
