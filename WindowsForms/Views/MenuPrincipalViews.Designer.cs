@@ -34,6 +34,7 @@
             appClima_ToolStripMenuItem = new ToolStripMenuItem();
             CRUDPeliculasAPI_ToolStripMenuItem = new ToolStripMenuItem();
             CRUDPeliculasADO_ToolStripMenuItem = new ToolStripMenuItem();
+            peliculasEntityFrameworkToolStripMenuItem = new ToolStripMenuItem();
             tareasToolStripMenuItem = new ToolStripMenuItem();
             formularioFuentesToolStripMenuItem = new ToolStripMenuItem();
             tareaADOStockToolStripMenuItem = new ToolStripMenuItem();
@@ -41,7 +42,7 @@
             iconMenuItem1 = new FontAwesome.Sharp.IconMenuItem();
             toolStripSeparator1 = new ToolStripSeparator();
             salirToolStripSubMenu = new ToolStripMenuItem();
-            peliculasEntityFrameworkToolStripMenuItem = new ToolStripMenuItem();
+            submenuPaisesEFToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -67,7 +68,7 @@
             // 
             // Proyectos_ToolStripSubMenu
             // 
-            Proyectos_ToolStripSubMenu.DropDownItems.AddRange(new ToolStripItem[] { appClima_ToolStripMenuItem, CRUDPeliculasAPI_ToolStripMenuItem, CRUDPeliculasADO_ToolStripMenuItem, peliculasEntityFrameworkToolStripMenuItem });
+            Proyectos_ToolStripSubMenu.DropDownItems.AddRange(new ToolStripItem[] { appClima_ToolStripMenuItem, CRUDPeliculasAPI_ToolStripMenuItem, CRUDPeliculasADO_ToolStripMenuItem, peliculasEntityFrameworkToolStripMenuItem, submenuPaisesEFToolStripMenuItem });
             Proyectos_ToolStripSubMenu.IconChar = FontAwesome.Sharp.IconChar.None;
             Proyectos_ToolStripSubMenu.IconColor = Color.Black;
             Proyectos_ToolStripSubMenu.IconFont = FontAwesome.Sharp.IconFont.Auto;
@@ -87,7 +88,6 @@
             CRUDPeliculasAPI_ToolStripMenuItem.Name = "CRUDPeliculasAPI_ToolStripMenuItem";
             CRUDPeliculasAPI_ToolStripMenuItem.Size = new Size(217, 22);
             CRUDPeliculasAPI_ToolStripMenuItem.Text = "CRUD Peliculas (API)";
-            CRUDPeliculasAPI_ToolStripMenuItem.Click += CRUDPeliculasAPI_ToolStripMenuItem_Click;
             // 
             // CRUDPeliculasADO_ToolStripMenuItem
             // 
@@ -95,6 +95,13 @@
             CRUDPeliculasADO_ToolStripMenuItem.Size = new Size(217, 22);
             CRUDPeliculasADO_ToolStripMenuItem.Text = "CRUD Peliculas (ADO .NET)";
             CRUDPeliculasADO_ToolStripMenuItem.Click += CRUDPeliculasADO_ToolStripMenuItem_Click;
+            // 
+            // peliculasEntityFrameworkToolStripMenuItem
+            // 
+            peliculasEntityFrameworkToolStripMenuItem.Name = "peliculasEntityFrameworkToolStripMenuItem";
+            peliculasEntityFrameworkToolStripMenuItem.Size = new Size(217, 22);
+            peliculasEntityFrameworkToolStripMenuItem.Text = "Peliculas Entity Framework";
+            peliculasEntityFrameworkToolStripMenuItem.Click += peliculasEntityFrameworkToolStripMenuItem_Click;
             // 
             // tareasToolStripMenuItem
             // 
@@ -144,12 +151,11 @@
             salirToolStripSubMenu.Text = "Salir";
             salirToolStripSubMenu.Click += salirToolStripSubMenu_Click;
             // 
-            // peliculasEntityFrameworkToolStripMenuItem
+            // submenuPaisesEFToolStripMenuItem
             // 
-            peliculasEntityFrameworkToolStripMenuItem.Name = "peliculasEntityFrameworkToolStripMenuItem";
-            peliculasEntityFrameworkToolStripMenuItem.Size = new Size(217, 22);
-            peliculasEntityFrameworkToolStripMenuItem.Text = "Peliculas Entity Framework";
-            peliculasEntityFrameworkToolStripMenuItem.Click += peliculasEntityFrameworkToolStripMenuItem_Click;
+            submenuPaisesEFToolStripMenuItem.Name = "submenuPaisesEFToolStripMenuItem";
+            submenuPaisesEFToolStripMenuItem.Size = new Size(217, 22);
+            submenuPaisesEFToolStripMenuItem.Text = "Submenu Paises EF";
             // 
             // MenuPrincipalViews
             // 
@@ -182,5 +188,6 @@
         private ToolStripMenuItem CRUDPeliculasADO_ToolStripMenuItem;
         private ToolStripMenuItem tareaADOStockToolStripMenuItem;
         private ToolStripMenuItem peliculasEntityFrameworkToolStripMenuItem;
+        private ToolStripMenuItem submenuPaisesEFToolStripMenuItem;
     }
 }

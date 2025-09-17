@@ -28,11 +28,7 @@ namespace WindowsForms.Views
             climaAppView.ShowDialog();
         }
 
-        private void CRUDPeliculasAPI_ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            PeliculasViews peliculasViews = new PeliculasViews();
-            peliculasViews.ShowDialog();
-        }
+       
 
         private void CRUDPeliculasADO_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -60,8 +56,8 @@ namespace WindowsForms.Views
 
         private void peliculasEntityFrameworkToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PeliculasEFViews peliculasEFViews = new PeliculasEFViews();
-            peliculasEFViews.ShowDialog();
+            PeliculasEFView peliculasEFView = new PeliculasEFView();
+            peliculasEFView.ShowDialog();
         }
     }
 }

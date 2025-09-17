@@ -8,13 +8,13 @@ namespace WindowsForms.Models
 {
     public class Pais
     {
-        public int Id { get; set; }
-        public string Nombre { get; set; }
-        public bool Eliminado { get; set; }
-
+        public int id { get; set; } = 0;
+        public string Nombre { get; set; } = string.Empty;
+        public bool Eliminado { get; set; } = false;
         public override string ToString()
         {
             return Nombre;
         }
     }
 }
+

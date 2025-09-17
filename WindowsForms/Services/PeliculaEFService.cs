@@ -1,31 +1,30 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
-using WindowsForms.Models;
-using System.Net.Http.Json;
 using WindowsForms.DataContext;
-using Microsoft.EntityFrameworkCore;
+using WindowsForms.Models;
 
 namespace WindowsForms.Services
 {
     public class PeliculaEFService
     {
-        public async Task<List<Pais>?> GetAllAsync()
+        public async Task<List<Pelicula>?> GetAllAsync()
         {
             using (CineContext cine = new CineContext())
             {
-                return await cine.Peliculas.Include(p =>p.Pais).ToListAsync();
+                return await cine.Peliculas.Include(p=>p.Pais).ToListAsync();
             }
         }
-
         public async Task<bool> DeleteAsync(int? id)
         {
             using (CineContext cine = new CineContext())
             {
                 var peliculaABorrar = await cine.Peliculas.FindAsync(id);
-                peliculaABorrar.Eliminado = true; // Marcamos como eliminado en lugar de borrar físicamente
+                peliculaABorrar.Eliminado = true; // Marcamos la película como eliminada
                 cine.Peliculas.Update(peliculaABorrar);
                 var resultado = await cine.SaveChangesAsync();
                 if (resultado > 0)
@@ -34,16 +33,15 @@ namespace WindowsForms.Services
                 }
                 else
                 {
-                    throw new Exception("Error al borrar la pelicula");
+                    throw new Exception("Error al eliminar la pelicula");
                 }
             }
         }
-    
-        public async Task<bool> UpdateAsync(Pais peliculaActualizada)
+        public async Task<bool> UpdateAsync(Pelicula pelicula)
         {
             using (CineContext cine = new CineContext())
             {
-                cine.Peliculas.Update(peliculaActualizada);
+                cine.Peliculas.Update(pelicula);
                 var resultado = await cine.SaveChangesAsync();
                 if (resultado > 0)
                 {
@@ -55,14 +53,13 @@ namespace WindowsForms.Services
                 }
             }
         }
-
-        public async Task<bool> AddAsync(Pais peliculaAgregada)
+        public async Task<bool> AddAsync(Pelicula pelicula)
         {
             using (CineContext cine = new CineContext())
             {
-                cine.Peliculas.Add(peliculaAgregada);
-                var resultado = await cine.SaveChangesAsync();
-                if (resultado > 0)
+                cine.Peliculas.Add(pelicula);
+                var response = await cine.SaveChangesAsync();
+                if (response>0)
                 {
                     return true;
                 }
@@ -72,6 +69,5 @@ namespace WindowsForms.Services
                 }
             }
         }
-
     }
 }

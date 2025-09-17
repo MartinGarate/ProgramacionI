@@ -16,7 +16,7 @@ namespace WindowsForms.Models
         public double calificacion { get; set; }
         public int? PaisId { get; set; }
         public Pais Pais { get; set; }
-
         public bool Eliminado { get; set; }
+
     }
 }

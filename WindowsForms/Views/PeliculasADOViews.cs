@@ -8,7 +8,6 @@ using System.Linq;
 using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
 using WindowsForms.Models;
 using WindowsForms.Services;
@@ -17,10 +16,11 @@ namespace WindowsForms.Views
 {
     public partial class PeliculasADOViews : Form
     {
-        
         PeliculaADOService peliculaService = new PeliculaADOService();
-        Pais peliculaModificada;
-        List<Pais> peliculas;
+        // Se actualiza el tipo para usar Pelicula
+        Pelicula? peliculaModificada;
+        // Se actualiza la lista para usar Pelicula
+        List<Pelicula> peliculas = new List<Pelicula>();
 
         public PeliculasADOViews()
         {
@@ -30,37 +30,35 @@ namespace WindowsForms.Views
 
         private async void ObtenemosPeliculas()
         {
-            peliculas = await peliculaService.GetAllAsync();
+            // Se utiliza el operador de fusión nula
+            peliculas = await peliculaService.GetAllAsync() ?? new List<Pelicula>();
             dataGridViewFilm.DataSource = peliculas;
         }
 
         private async void btnBorrar_Click(object sender, EventArgs e)
         {
-            //checkeamos que haya peliculas seleccionadas
             if (dataGridViewFilm.RowCount > 0 && dataGridViewFilm.SelectedRows.Count > 0)
             {
-                
-                Pais peliculaSeleccionada = (Pais)dataGridViewFilm.SelectedRows[0].DataBoundItem;
-                var respuesta = MessageBox.Show($"¿Seguro que quieres borrar la pelicula seleccionada?{peliculaSeleccionada.titulo}", "Borrar Pelicula", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                // Convertimos al tipo Pelicula
+                Pelicula peliculaSeleccionada = (Pelicula)dataGridViewFilm.SelectedRows[0].DataBoundItem;
+                var respuesta = MessageBox.Show($"¿Seguro que quieres borrar la película seleccionada? {peliculaSeleccionada.titulo}", "Borrar Película", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (respuesta == DialogResult.Yes)
                 {
-                    //obtenemos el id de la pelicula seleccionada
-
                     if (await peliculaService.DeleteAsync(peliculaSeleccionada.id))
                     {
-                        LabelStatusMessage.Text = $"Pelicula {peliculaSeleccionada.titulo} borrada correctamente";
+                        LabelStatusMessage.Text = $"Película {peliculaSeleccionada.titulo} borrada correctamente";
                         ObtenemosPeliculas();
                         TimerStatusBar.Start();
                     }
                     else
                     {
-                        MessageBox.Show("Error al borrar la pelicula", "Borrar Pelicula", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error al borrar la película", "Borrar Película", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("No hay peliculas seleccionadas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("No hay películas seleccionadas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -69,7 +67,7 @@ namespace WindowsForms.Views
         {
             if (dataGridViewFilm.RowCount > 0 && dataGridViewFilm.SelectedRows.Count > 0)
             {
-                Pais peliculaSeleccionada = (Pais)dataGridViewFilm.SelectedRows[0].DataBoundItem;
+                Pelicula peliculaSeleccionada = (Pelicula)dataGridViewFilm.SelectedRows[0].DataBoundItem;
                 pictureBoxFilm.ImageLocation = peliculaSeleccionada.portada;
             }
         }
@@ -84,6 +82,7 @@ namespace WindowsForms.Views
             LimpiarControlAgregar();
             tabControl.SelectTab("tabPageAgregar_Editar");
         }
+
         private void LimpiarControlAgregar()
         {
             textBoxPortada.Text = string.Empty;
@@ -95,9 +94,9 @@ namespace WindowsForms.Views
 
         private async void iconButtonGuardar_Click_1(object sender, EventArgs e)
         {
-            Pais PeliculaAGuardar = new Pais
+            Pelicula PeliculaAGuardar = new Pelicula
             {
-                _id = peliculaModificada?._id??null,
+                _id = peliculaModificada?._id,
                 titulo = textBoxTitulo.Text,
                 duracion = (int)numericDuracion.Value,
                 portada = textBoxPortada.Text,
@@ -115,18 +114,17 @@ namespace WindowsForms.Views
             if (response)
             {
                 peliculaModificada = null;
-                LabelStatusMessage.Text = "Pelicula guardada correctamente";
+                LabelStatusMessage.Text = "Película guardada correctamente";
                 TimerStatusBar.Start();
                 ObtenemosPeliculas();
                 tabControl.SelectTab("TabPageLista");
             }
             else
             {
-                MessageBox.Show("Error al modificar la pelicula", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al modificar la película", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             LimpiarControlAgregar();
         }
-
 
         private void iconButtonCancelar_Click(object sender, EventArgs e)
         {
@@ -138,23 +136,21 @@ namespace WindowsForms.Views
         {
             if (dataGridViewFilm.RowCount > 0 && dataGridViewFilm.SelectedRows.Count > 0)
             {
-                peliculaModificada = (Pais)dataGridViewFilm.SelectedRows[0].DataBoundItem;
+                peliculaModificada = (Pelicula)dataGridViewFilm.SelectedRows[0].DataBoundItem;
                 textBoxTitulo.Text = peliculaModificada.titulo;
                 numericDuracion.Value = peliculaModificada.duracion;
                 textBoxPortada.Text = peliculaModificada.portada;
                 numericCalificacion.Value = (decimal)peliculaModificada.calificacion;
                 tabControl.SelectTab("tabPageAgregar_Editar");
             }
-
             LimpiarControlAgregar();
         }
 
-
         private void iconButtonBuscar_Click(object sender, EventArgs e)
         {
-                dataGridViewFilm.DataSource = peliculas.Where(p => p.titulo.ToLower().Contains(textBoxBuscar.Text.ToLower()))
-                    .ToList();
-
+            dataGridViewFilm.DataSource = peliculas
+                .Where(p => p.titulo.ToLower().Contains(textBoxBuscar.Text.ToLower()))
+                .ToList();
         }
 
         private void textBoxBuscar_TextChanged(object sender, EventArgs e)
@@ -163,7 +159,6 @@ namespace WindowsForms.Views
             {
                 iconButtonBuscar.PerformClick();
             }
-
         }
 
         private void TimerStatusBar_Tick(object sender, EventArgs e)

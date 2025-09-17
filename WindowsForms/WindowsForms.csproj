@@ -32,7 +32,7 @@
     <Compile Update="Views\PeliculasADOViews.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Views\PeliculasEFViews.cs">
+    <Compile Update="Views\PaisesEFView.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

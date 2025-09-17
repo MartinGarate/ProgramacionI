@@ -1,77 +1,73 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
-using WindowsForms.Models;
-using System.Net.Http.Json;
 using WindowsForms.DataContext;
-using Microsoft.EntityFrameworkCore;
+using WindowsForms.Models;
 
 namespace WindowsForms.Services
 {
     public class PaisEFService
     {
-        public async Task<List<Pais>?> GetAllAsync()
-        {
-            using (CineContext cine = new CineContext())
+            public async Task<List<Pais>?> GetAllAsync()
             {
-                return await cine.Paises.ToListAsync();
-            }
-        }
-
-        public async Task<bool> DeleteAsync(int? id)
-        {
-            using (CineContext cine = new CineContext())
-            {
-                var PaisBorrar = await cine.Paises.FindAsync(id);
-                PaisBorrar.Eliminado = true; // Marcamos como eliminado
-                cine.Paises.Update(PaisBorrar);
-                var resultado = await cine.SaveChangesAsync();
-                if (resultado > 0)
+                using (CineContext cine = new CineContext())
                 {
-                    return true; // Se eliminó correctamente
-                }
-                else
-                {
-                    throw new Exception("Error al eliminar el pais");
+                    return await cine.Paises.ToListAsync();
                 }
             }
-
-        }
-    
-        public async Task<bool> UpdateAsync(Pais pais)
-        {
-            using (CineContext cine = new CineContext())
+            public async Task<bool> DeleteAsync(int? id)
             {
-                cine.Paises.Update(pais);
-                var resultado = await cine.SaveChangesAsync();
-                if (resultado > 0)
+                using (CineContext cine = new CineContext())
                 {
-                    return true;
-                }
-                else
-                {
-                    throw new Exception("Error al actualizar el pais");
+                    var paisABorrar = await cine.Paises.FindAsync(id);
+                    paisABorrar.Eliminado = true; // Marcamos la película como eliminada
+                    cine.Paises.Update(paisABorrar);
+                    var resultado = await cine.SaveChangesAsync();
+                    if (resultado > 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        throw new Exception("Error al eliminar el país");
+                    }
                 }
             }
-        }
-
-        public async Task<bool> AddAsync(Pais pais)
-        {
-            using (CineContext cine = new CineContext())
+            public async Task<bool> UpdateAsync(Pais pais)
             {
-                cine.Paises.Add(pais);
-                var resultado = await cine.SaveChangesAsync();
-                if (resultado > 0)
+                using (CineContext cine = new CineContext())
                 {
-                    return true;
+                    cine.Paises.Update(pais);
+                    var resultado = await cine.SaveChangesAsync();
+                    if (resultado > 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        throw new Exception("Error al actualizar el país");
+                    }
                 }
-                else
+            }
+            public async Task<bool> AddAsync(Pais pais)
+            {
+                using (CineContext cine = new CineContext())
                 {
-                    throw new Exception("Error al agregar el pais");
+                    cine.Paises.Add(pais);
+                    var response = await cine.SaveChangesAsync();
+                    if (response > 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        throw new Exception("Error al agregar el país");
+                    }
                 }
             }
         }
     }
-}
